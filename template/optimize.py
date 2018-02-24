@@ -1,5 +1,6 @@
 from solution import Solution
 from problem import Problem
+from writer import ConsoleWriter
 
 import time
 
@@ -7,10 +8,6 @@ MAX_ITERATION = 1000
 TABU_LIST_LENGTH = 100
 
 class Optimizer:
-    """
-    Abstract optimizer class
-    Uses some Neighbourhood classes to search in for the solutions' neighbours
-    """
     s = None
     p = None
 
@@ -24,9 +21,6 @@ class Optimizer:
         raise Exception("Need to implement 'run' method")
 
 class Tabu(Optimizer):
-    """
-    Classical tabu search
-    """
 
     tabu_limit = 100
 
