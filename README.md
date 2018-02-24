@@ -17,6 +17,7 @@ Reader(Input File) -> Problem -> Initial Solver -> Solution -> Optimizer
 - is_OK(): returns True if the solution is valid, False in other case
 - print(): prints the solution in some managable way
 - out(): parse the solution to HashCode output format
+- duplicate(): makes a copy of the solution
 
 **class InitSolver**
 *provides some initial solution; there could be a lot of inherited classes*
