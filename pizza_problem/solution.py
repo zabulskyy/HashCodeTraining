@@ -12,26 +12,51 @@ class Solution:
         occupied = [[False] * pizza_w for _ in range(pizza_h)]
         for i in range(pizza_h):  # coordinate i of a topleft cell of a slice
             for j in range(pizza_w):  # coordinate j of a topleft cell of a slice
-                # if self.s[i][j] == False :
-                #    raise Exception("Cell ({} {}) isn't occupied".format(i, j))
                 h, w = self.s[i][j]  # heigh and width of a slice
-                if not self.p.isvalidslice(i, j, h, w):
-                    raise Exception(
-                        "Slice ({} {}), {} {} is not valid".format(i, j, h, w))
-                for xi in range(i, i + h + 1):
-                    for xj in range(j, j + w + 1):
-                        print(xi, xj)
-                        if occupied[xi][xj]:
-                            raise Exception("Slice ({} {}), {} {} overlaps with cell ({} {})".format(
-                                i, j, h, w, xi, xj))
-                        if self.s[xi][xj] != (0, 0) and not (xi == i and xj == j):
-                            raise Exception("Slice ({} {}), {} {} overlaps with cell ({} {})".format(
-                                i, j, h, w, xi, xj))
-
-            return True
+                if (h, w) != (0, 0):
+                    if not self.p.isvalidslice(i, j, h, w):
+                        return False
+                    for xi in range(i, i + h + 1):
+                        for xj in range(j, j + w + 1):
+                            if occupied[xi][xj]:
+                                return False
+                            occupied[xi][xj] = True
+        return True
 
     def out(self):
         pass
 
     def score(self):
-        pass
+        score = 0
+        pizza_h, pizza_w = self.p.getheight(), self.p.getwidth()
+        for i in range(pizza_h):  # coordinate i of a topleft cell of a slice
+            for j in range(pizza_w):  # coordinate j of a topleft cell of a slice
+                cell = self.s[i][j]
+                if cell != (0, 0):
+                    score += (cell[0] + 1) * (cell[1] + 1)
+        return score
+
+
+def test():
+    instance = [
+        [(1, 1), (0, 0), (2, 0)],
+        [(0, 0), (0, 0), (0, 0)],
+        [(0, 1), (0, 0), (0, 0)],
+    ]
+    s = Solution(Problem(), instance)
+    print(s.is_ok())
+    print(s.score())
+
+
+class Problem:
+    def getheight(self):
+        return 3
+
+    def getwidth(self):
+        return 3
+
+    def isvalidslice(self, i, j, h, w):
+        return True
+
+
+test()
