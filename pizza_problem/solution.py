@@ -15,8 +15,8 @@ class Solution:
                 if (h, w) != (0, 0):
                     if not self.p.isvalidslice(i, j, h, w):
                         return False
-                    for xi in range(i, i + h + 1):
-                        for xj in range(j, j + w + 1):
+                    for xi in range(i, i + h):
+                        for xj in range(j, j + w):
                             if occupied[xi][xj]:
                                 return False
                             occupied[xi][xj] = True
@@ -44,15 +44,15 @@ class Solution:
             for j in range(pizza_w):  # coordinate j of a topleft cell of a slice
                 cell = self.s[i][j]
                 if cell != (0, 0):
-                    score += (cell[0] + 1) * (cell[1] + 1)
+                    score += (cell[0]) * (cell[1])
         return score
 
-'''
+
 def test():
     instance = [
-        [(1, 1), (0, 0), (2, 0)],
+        [(3, 3), (0, 0), (1, 2)],
         [(0, 0), (0, 0), (0, 0)],
-        [(0, 1), (0, 0), (0, 0)],
+        [(0, 0), (0, 0), (0, 0)],
     ]
     s = Solution(Problem(), instance)
     print(s.is_ok())
@@ -72,4 +72,3 @@ class Problem:
 
 
 test()
-'''
