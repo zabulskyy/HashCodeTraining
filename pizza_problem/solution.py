@@ -31,11 +31,10 @@ class Solution:
                 h, w = self.s[i][j]  # heigh and width of a slice
                 if (h, w) != (0, 0):
                     amount += 1
-                    data.append((i, j, i + h, j + w))
+                    data.append((i, j, i + h - 1, j + w - 1))
         print(amount)
         for i in data:
             print("{} {} {} {}".format(i[0], i[1], i[2], i[3]))
-
 
     def score(self):
         score = 0
@@ -44,13 +43,14 @@ class Solution:
             for j in range(pizza_w):  # coordinate j of a topleft cell of a slice
                 cell = self.s[i][j]
                 if cell != (0, 0):
-                    score += (cell[0]) * (cell[1])
+                    score += cell[0] * cell[1]
         return score
 
 
+"""
 def test():
     instance = [
-        [(3, 3), (0, 0), (1, 2)],
+        [(3, 2), (0, 0), (3, 1)],
         [(0, 0), (0, 0), (0, 0)],
         [(0, 0), (0, 0), (0, 0)],
     ]
@@ -71,4 +71,5 @@ class Problem:
         return True
 
 
-# test()
+test()
+"""
