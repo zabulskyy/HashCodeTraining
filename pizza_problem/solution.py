@@ -8,7 +8,6 @@ class Solution:
 
     def is_ok(self):
         pizza_h, pizza_w = self.p.getheight(), self.p.getwidth()
-        # (is_occupied, (coords of the owner))
         occupied = [[False] * pizza_w for _ in range(pizza_h)]
         for i in range(pizza_h):  # coordinate i of a topleft cell of a slice
             for j in range(pizza_w):  # coordinate j of a topleft cell of a slice
@@ -24,7 +23,19 @@ class Solution:
         return True
 
     def out(self):
-        pass
+        data = []
+        amount = 0
+        pizza_h, pizza_w = self.p.getheight(), self.p.getwidth()
+        for i in range(pizza_h):  # coordinate i of a topleft cell of a slice
+            for j in range(pizza_w):  # coordinate j of a topleft cell of a slice
+                h, w = self.s[i][j]  # heigh and width of a slice
+                if (h, w) != (0, 0):
+                    amount += 1
+                    data.append((i, j, i + h, j + w))
+        print(amount)
+        for i in data:
+            print("{} {} {} {}".format(i[0], i[1], i[2], i[3]))
+
 
     def score(self):
         score = 0
@@ -36,7 +47,7 @@ class Solution:
                     score += (cell[0] + 1) * (cell[1] + 1)
         return score
 
-
+'''
 def test():
     instance = [
         [(1, 1), (0, 0), (2, 0)],
@@ -46,6 +57,7 @@ def test():
     s = Solution(Problem(), instance)
     print(s.is_ok())
     print(s.score())
+    s.out()
 
 
 class Problem:
@@ -60,3 +72,4 @@ class Problem:
 
 
 test()
+'''
