@@ -2,7 +2,7 @@ from problem import Problem
 from solution import Solution
 
 
-class SolverNaive:
+class SolverOptim:
 	def __init__(self, problem):
 		self.p = problem
 
@@ -15,29 +15,49 @@ class SolverNaive:
 	def run(self):
 		n = self.p.getheight()
 		m = self.p.getwidth()
-		result = [[0] * m for i in range(n)]
+		
+		maxslice = [[0] * m for i in range(n)]
+
 		for i in range(n):
 			for j in range(m):
-				for item in self.p.getvalidslicessizes():
-					if(self.p.isvalidslice(i, j, item[0], item[1])):
-						result[i][j] += 1
+				current = 0
+				for currentslice in self.p.getvalidslicessizes():
+					if(not self.p.isvalidslice(i, j, currentslice[0], currentslice[1])):
+						continue
+					if(self.check(i, j, currentslice[0], currentslice[1])):
+						continue
+					current = max(current, currentslice[0] * currentslice[1])
+				maxslice[i][j] = current
 
-		cells = []
+		data = {}
+		datalst = []
 		for i in range(n):
 			for j in range(m):
-				if(result[i][j] > 0):
-					cells.append((i, j))
-		cells.sort(key=lambda n: result[n[0]][n[1]])
+				cell = (i, j)
+				for currentslice in self.p.getvalidslicessizes():
+					if(not self.p.isvalidslice(i, j, currentslice[0], currentslice[1])):
+						continue
+					if(not self.check(i, j, currentslice[0], currentslice[1])):
+						continue
+					score = currentslice[0] * currentslice[1]
 
-		for cell in cells:
-			uplefti, upleftj = cell
-			for slicepice in self.p.getvalidslicessizes():
-				if(not self.p.isvalidslice(uplefti, upleftj, slicepice[0], slicepice[1])):
-					continue
-				if(not self.check(uplefti, upleftj, slicepice[0], slicepice[1])):
-					continue
-				self.put(uplefti, upleftj, slicepice[0], slicepice[1])
-				break
+					alternative = 0
+
+					for ti in range(currentslice[0]):
+						for tj in range(currentslice[1]):
+							if(ti == 0 and tj == 0):continue
+							alternative += maxslice[i + ti][j + tj]
+					score -= alternative
+					data[(cell, currentslice)] = score
+					datalst.append((cell, currentslice))
+
+		datalst.sort(key = lambda n: data[n], reverse=True)
+
+		for item in datalst:
+			cell, currentslice = item
+			if(not self.check(cell[0], cell[1], currentslice[0], currentslice[1])):
+				continue
+			self.put(cell[0], cell[1], currentslice[0], currentslice[1])
 
 		return Solution(self.p, self.solutionfield)
 
