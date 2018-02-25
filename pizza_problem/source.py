@@ -1,9 +1,12 @@
 from problem import *
 from solver import *
 from solution import *
+from reader import *
 
-p = Problem(["MMT", "TTT", "MTM"], 1, 4)
+reader = Reader()
+p = reader.read()
 solv = SolverNaive(p)
 solu = solv.run()
 
 print(solu.score())
+print(solu.out())
