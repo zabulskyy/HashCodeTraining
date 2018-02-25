@@ -7,6 +7,5 @@ reader = Reader()
 p = reader.read()
 solv = SolverNaive(p)
 solu = solv.run()
-
+solu.out()
 print(solu.score())
-print(solu.out())
