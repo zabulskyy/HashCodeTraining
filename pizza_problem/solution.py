@@ -35,27 +35,3 @@ class Solution:
 
     def score(self):
         pass
-
-
-def test():
-    instance = [
-        [(1, 1), (0, 0), (2, 0)],
-        [(0, 0), (0, 0), (0, 0)],
-        [(0, 2), (0, 0), (0, 0)],
-    ]
-    s = Solution(Problem(), instance)
-    print(s.is_ok())
-
-
-class Problem:
-    def getheight(self):
-        return 3
-
-    def getwidth(self):
-        return 3
-
-    def isvalidslice(self, i, j, h, w):
-        return True
-
-
-test()
