@@ -1,6 +1,7 @@
 from problem import Problem
 from solution import Solution
 
+
 class InitSolver:
 
     def __init__(self):
@@ -17,6 +18,8 @@ class InitSolver:
 # Goes from left to right, from top to bottom
 # Cut slice whenever max conditions are met (<=H pices in a slice)
 #
+
+
 class InitSolverSilly(InitSolver):
 
     def run(self, problem):
@@ -35,10 +38,10 @@ class InitSolverSilly(InitSolver):
                     break
             else:
                 col += 1
-            if col>=problem.max_width:
+            if col >= problem.max_width:
                 row += 1
                 col = 0
-            if row>=problem.max_height:
+            if row >= problem.max_height:
                 break
             # print(row, col)
         return sol
