@@ -73,7 +73,8 @@ class Solution:
     def get_hash(self, is_string=False):
         m = hashlib.md5()
         table = self._prepare_string()
-        m.update("".join(["".join([table[i][j] for j in range(self.p.max_width)]) for i in range(self.p.max_height)]))
+        s = "".join(["".join([table[i][j] for j in range(self.p.max_width)]) for i in range(self.p.max_height)])
+        m.update(s.encode('utf-8'))
         if is_string:
             return m.hexdigest()
         return m.digest()

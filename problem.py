@@ -27,7 +27,7 @@ class Problem:
     def is_valid_slice(self, upperi, upperj, height, width):
         if height * width > self.H:
             return False
-        if not self.valid(upperi+height-1, upperj+width-1):
+        if not self.valid(upperi+height-1, upperj+width-1) or not self.valid(upperi, upperj):
             return False
         ts, ms = 0, 0
         for i in range(upperi, upperi+height):
