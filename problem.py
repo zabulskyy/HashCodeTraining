@@ -48,5 +48,5 @@ class Problem:
             for max_size in range(2*self.L, self.H+1):
                 for i in range(1, max_size+1):
                     if max_size % i == 0:
-                        self._slices_formats.append((i, max_size / i))
+                        self._slices_formats.append((i, max_size // i))
         return self._slices_formats[:]

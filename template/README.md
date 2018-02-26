@@ -24,6 +24,7 @@ Basic interfaces
 **class InitSolver**
 *provides some initial solution; there could be a lot of inherited classes*
 - run(Problem): returns Solution
+- @staticmethod parameters_universum_set(): returns a list of all possible parameters combinations
 
 **class Optimize**
 *continuosly tries to optimize the solutions*

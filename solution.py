@@ -60,8 +60,7 @@ class Solution:
             for i in range(slice[0], slice[0] + slice[2]):
                 for j in range(slice[1], slice[1] + slice[3]):
                     table[i][j] = alphabet[k]
-            k += 1
-            k = k % alphabet_n
+            k = (k + 1) % alphabet_n
         return table
 
     def print_solution(self):
