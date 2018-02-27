@@ -38,6 +38,13 @@ class InitSolver:
             - A:B will generate a set of numbers from A to B included (e.g. 1:5 => 1, 2, 3, 4, 5)
             - A:B:C will generate a set of number from A to B with the step C (e.g. -6:6:3 => -6, -3, 0, 3, 6)
 
+        Example of the parameter file:
+        # Some comment
+        par1= 100
+          par2=-2;      par3="asdfsaf";     par4 = false;   par5=TRUE;  par6=False; par7=-5.10
+        par1=1,2; par2="abc","xyz"; par3=True,False
+        par1=1:5; par2=-6:6:3
+
         :param file_name: Input text file
         :return: list of parameter dicts
         """
