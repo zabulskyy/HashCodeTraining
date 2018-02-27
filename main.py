@@ -83,5 +83,5 @@ def scenario_D(file_in, file_out):
 if __name__=="__main__":
     # scenario_A("input_data/example.in", "output_data/example.out")
     # scenario_B("input_data/big.in", "output_data/big.out")
-    # scenario_C("input_data/small.in", "output_data/small.out")
-    scenario_D("input_data/big.in", "output_data/big.out")
+    scenario_C("input_data/medium.in", "output_data/medium.out")
+    # scenario_D("input_data/big.in", "output_data/big.out")

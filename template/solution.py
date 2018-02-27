@@ -57,3 +57,11 @@ class Solution:
         s = Solution(self.p)
         # TODO: Add copying of all solution's structures
         return s
+
+    def load__from_solution_file(self, in_file):
+        """
+        Generates a solution from the output file.
+        Useful for the optimizers when they need to pass a solution from a file.
+        :param in_file: File name
+        """
+        raise Exception("Need to implement 'load__from_solution_file' method")
