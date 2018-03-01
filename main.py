@@ -89,8 +89,6 @@ if __name__=="__main__":
     parser.add_option("-p", "--param-file", dest="par_file", help="Parameters' file name", metavar="FILE", default=None)
     (options, args) = parser.parse_args()
 
-    print(options.in_file, options.out_file, options.par_file)
-
     scenario_C(options.in_file, options.out_file, options.par_file)
 
     # scenario_A("input_data/example.in", "output_data/example.out")

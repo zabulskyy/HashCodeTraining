@@ -143,7 +143,7 @@ class ParallelInitSolver(InitSolver):
               format(id, score, ", ".join(["{}: {}".format(k, v) for k, v in parameters.items()])))
 
         if self.file_output:
-            writer = FileWriter("{}.{}".format(self.file_output, id))
+            writer = FileWriter("{}.{}.{}.out".format(self.file_output, id, score))
             writer.write(solution)
 
         return solution, score
